@@ -2,7 +2,10 @@ module year_end_project
 
 go 1.19
 
-require github.com/gin-gonic/gin v1.9.1
+require (
+	github.com/anaskhan96/soup v1.2.5
+	github.com/gin-gonic/gin v1.9.1
+)
 
 require (
 	github.com/bytedance/sonic v1.9.1 // indirect
