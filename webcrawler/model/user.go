@@ -16,6 +16,17 @@ type User struct {
 	Password string `json:"password" form:"password" binding:"required"`
 }
 
+func GetCookieAndAuth(number, password string) (string, string) {
+	ji, rp := NewCCNUClient(number, password)
+	pt, _ := Index(ji, rp)
+
+	autho := "Bearer " + pt
+
+	cookie := "JSESSIONID=" + ji + "; routeportal=" + rp + "; PORTAL_TOKEN=" + pt
+
+	return cookie, autho
+}
+
 func NewCCNUClient(studentID string, password string) (string, string) {
 	htmlBody, _ := soup.Get("https://account.ccnu.edu.cn/cas/login?service=http%3A%2F%2Fone.ccnu.edu.cn%2Fcas%2Flogin_portal")
 	doc := soup.HTMLParse(htmlBody)

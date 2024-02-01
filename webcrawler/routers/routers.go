@@ -15,5 +15,9 @@ func NewRouter() *gin.Engine {
 	{
 		a.POST("/get", handler.GetCanteenInfo)
 	}
+	b := v1.Group("/dorm")
+	{
+		b.GET("/get/area", handler.GetDormInfo)
+	}
 	return r
 }
