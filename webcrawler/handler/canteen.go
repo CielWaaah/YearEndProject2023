@@ -25,6 +25,7 @@ func GetCanteenInfo(c *gin.Context) {
 		previousMonthString := firstDay.Format("2006-01-02")
 
 		body, _ := model.GetCanteenDataWithCookie("http://one.ccnu.edu.cn/ecard_portal/query_trans", autho, cookie, previousMonthString, timeString)
+
 		c.JSON(200, gin.H{
 			"message": body,
 		})
