@@ -19,9 +19,10 @@ func GetCanteenInfo(c *gin.Context) {
 		// 将时间转换为字符串
 		timeString := currentTime.Format("2006-01-02")
 
-		firstDayOfMonth := time.Date(currentTime.Year(), currentTime.Month(), 1, 0, 0, 0, 0, currentTime.Location())
+		// 获取今年的第一天
+		firstDay := time.Date(currentTime.Year(), 1, 1, 0, 0, 0, 0, currentTime.Location())
 		// 将时间转换为字符串
-		previousMonthString := firstDayOfMonth.Format("2006-01-02")
+		previousMonthString := firstDay.Format("2006-01-02")
 
 		body, _ := model.GetCanteenDataWithCookie("http://one.ccnu.edu.cn/ecard_portal/query_trans", autho, cookie, previousMonthString, timeString)
 		c.JSON(200, gin.H{
