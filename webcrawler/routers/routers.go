@@ -30,6 +30,8 @@ func NewRouter() *gin.Engine {
 	d := v1.Group("/work_bench")
 	{
 		d.GET("/get", handler.Member)
+		d.GET("/get/wyx", handler.WYX)
 	}
+
 	return r
 }

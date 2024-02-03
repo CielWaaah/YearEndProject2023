@@ -13,3 +13,14 @@ func Member(c *gin.Context) {
 		})
 	}
 }
+
+func WYX(c *gin.Context) {
+	uid := "272"
+	articles, err := model.GetUserArticles(uid)
+	if err == nil {
+		c.JSON(200, gin.H{
+			"message": articles,
+		})
+	}
+
+}

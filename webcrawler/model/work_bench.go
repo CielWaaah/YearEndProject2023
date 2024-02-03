@@ -36,10 +36,14 @@ func GetMemberInfo() (string, error) {
 
 func GetUserArticles(uid string) (string, error) {
 	url := fmt.Sprintf("http://work.muxi-tech.xyz/api/v1.0/status/%v/list/1/", uid)
+	fmt.Println(url)
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return "", err
 	}
+
+	req.Header.Set("Cookie", conf.WCookie)
+	req.Header.Set("Token", conf.WToken)
 
 	client := http.Client{}
 	resp, err := client.Do(req)
