@@ -26,5 +26,10 @@ func NewRouter() *gin.Engine {
 	{
 		c.POST("/get", handler.Library)
 	}
+	//工作台
+	d := v1.Group("/work_bench")
+	{
+		d.GET("/get", handler.Member)
+	}
 	return r
 }
