@@ -12,7 +12,6 @@ func NewRouter() *gin.Engine {
 	v1 := r.Group("api/v1")
 
 	//食堂
-
 	a := v1.Group("/canteen")
 	{
 		a.POST("/get", handler.GetCanteenInfo)
@@ -26,6 +25,12 @@ func NewRouter() *gin.Engine {
 	c := v1.Group("/library")
 	{
 		c.POST("/get", handler.Library)
+	}
+	//工作台
+	d := v1.Group("/work_bench")
+	{
+		d.GET("/get", handler.Member)
+		d.GET("/get/wyx", handler.WYX)
 	}
 
 	return r

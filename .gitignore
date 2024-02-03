@@ -19,3 +19,10 @@
 
 # Go workspace file
 go.work
+
+# Ignore YAML files
+*.yaml
+*.yml
+
+# Ignore ini files
+*.ini
