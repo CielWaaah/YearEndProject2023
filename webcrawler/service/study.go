@@ -1,6 +1,6 @@
-package model
+package service
 
-type Study struct {
+type StudyService struct {
 	//
 }
 

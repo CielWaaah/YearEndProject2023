@@ -1,12 +1,13 @@
-package handler
+package api
 
 import (
 	"github.com/gin-gonic/gin"
-	"year_end_project/webcrawler/model"
+	"year_end_project/webcrawler/service"
 )
 
 func Member(c *gin.Context) {
-	info, err := model.GetMemberInfo()
+	var m service.WorkBenchService
+	info, err := m.GetMemberInfo()
 	if err == nil {
 		c.JSON(200, gin.H{
 			"message": info,
@@ -15,8 +16,9 @@ func Member(c *gin.Context) {
 }
 
 func WYX(c *gin.Context) {
+	var m service.WorkBenchService
 	uid := "272"
-	articles, err := model.GetUserArticles(uid)
+	articles, err := m.GetUserArticles(uid)
 	if err == nil {
 		c.JSON(200, gin.H{
 			"message": articles,
