@@ -1,4 +1,4 @@
-package model
+package service
 
 import (
 	"io"
@@ -6,11 +6,11 @@ import (
 	"strings"
 )
 
-type Canteen struct {
+type CanteenService struct {
 	//
 }
 
-func GetCanteenDataWithCookie(dataURL, authorization, cookie, startT, endT string) (string, error) {
+func (service *CanteenService) GetCanteenDataWithCookie(dataURL, authorization, cookie, startT, endT string) (string, error) {
 	requestBody := "limit=10&page=1&tranType=&start=" + startT + "&end=" + endT
 
 	// 创建包含Cookie的请求

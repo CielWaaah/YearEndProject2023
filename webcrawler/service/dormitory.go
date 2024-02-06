@@ -1,16 +1,16 @@
-package model
+package service
 
 import (
 	"io"
 	"net/http"
 )
 
-type Domitory struct {
+type DomitoryService struct {
 	AreaName string
 	AreaID   string
 }
 
-func GetAreaNameAndID() (string, error) {
+func (service *DomitoryService) GetAreaNameAndID() (string, error) {
 	req, err := http.NewRequest("GET", "https://jnb.ccnu.edu.cn/icbs/PurchaseWebService.asmx/getAreaInfo", nil)
 	if err != nil {
 		return "", err
@@ -30,7 +30,7 @@ func GetAreaNameAndID() (string, error) {
 	return string(body), nil
 }
 
-func GetArchitectureNameAndID(areaID string) (string, error) {
+func (service *DomitoryService) GetArchitectureNameAndID(areaID string) (string, error) {
 	url := "https://jnb.ccnu.edu.cn/icbs/PurchaseWebService.asmx/getArchitectureInfo?Area_ID=" + areaID
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -51,7 +51,7 @@ func GetArchitectureNameAndID(areaID string) (string, error) {
 	return string(body), nil
 }
 
-func GetRoomNameAndID(arcID, floor string) (string, error) {
+func (service *DomitoryService) GetRoomNameAndID(arcID, floor string) (string, error) {
 	url := "https://jnb.ccnu.edu.cn/icbs/PurchaseWebService.asmx/getRoomInfo?Architecture_ID=" + arcID + "&Floor=" + floor
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -72,7 +72,7 @@ func GetRoomNameAndID(arcID, floor string) (string, error) {
 	return string(body), nil
 }
 
-func GetAmMeterID(roomID string) (string, error) {
+func (service *DomitoryService) GetAmMeterID(roomID string) (string, error) {
 	url := "https://jnb.ccnu.edu.cn/icbs/PurchaseWebService.asmx/getMeterInfo?Room_ID=" + roomID
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -93,7 +93,7 @@ func GetAmMeterID(roomID string) (string, error) {
 	return string(body), nil
 }
 
-func GetEnergyList(amID, sT, eT string) (string, error) {
+func (service *DomitoryService) GetEnergyList(amID, sT, eT string) (string, error) {
 	url := "https://jnb.ccnu.edu.cn/icbs/PurchaseWebService.asmx/getMeterDayValue?AmMeter_ID=" + amID + "&startDate=" + sT + "&endDate=" + eT
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {

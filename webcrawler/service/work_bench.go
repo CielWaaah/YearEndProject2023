@@ -1,4 +1,4 @@
-package model
+package service
 
 import (
 	"fmt"
@@ -7,11 +7,11 @@ import (
 	"year_end_project/webcrawler/conf"
 )
 
-type WorkBench struct {
+type WorkBenchService struct {
 	//
 }
 
-func GetMemberInfo() (string, error) {
+func (service *WorkBenchService) GetMemberInfo() (string, error) {
 	req, err := http.NewRequest("GET", "http://work.muxi-tech.xyz/api/v1.0/group/0/userList/", nil)
 	if err != nil {
 		return "", err
@@ -34,7 +34,7 @@ func GetMemberInfo() (string, error) {
 	return string(body), nil
 }
 
-func GetUserArticles(uid string) (string, error) {
+func (service *WorkBenchService) GetUserArticles(uid string) (string, error) {
 	url := fmt.Sprintf("http://work.muxi-tech.xyz/api/v1.0/status/%v/list/1/", uid)
 	fmt.Println(url)
 	req, err := http.NewRequest("GET", url, nil)

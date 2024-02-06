@@ -5,6 +5,7 @@ go 1.19
 require (
 	github.com/anaskhan96/soup v1.2.5
 	github.com/gin-gonic/gin v1.9.1
+	github.com/jinzhu/gorm v1.9.16
 	gopkg.in/ini.v1 v1.67.0
 )
 
@@ -19,6 +20,7 @@ require (
 	github.com/go-playground/validator/v10 v10.14.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
+	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.4 // indirect
 	github.com/kr/pretty v0.3.1 // indirect
