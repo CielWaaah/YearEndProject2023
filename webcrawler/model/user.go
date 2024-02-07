@@ -9,6 +9,7 @@ type User struct {
 	gorm.Model
 	Number    int       `gorm:"unique" json:"number" form:"number"` //学号
 	Admission time.Time `json:"admission" form:"admission"`         //入学时间
+	Dorm      Dormitory `json:"dorm" form:"dorm"`                   //宿舍
 }
 
 // 根据学号查用户
