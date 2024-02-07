@@ -1,13 +1,15 @@
 package service
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 )
 
 type DomitoryService struct {
-	AreaName string
-	AreaID   string
+	AreaName   string
+	AreaID     string
+	AmMeter_ID string
 }
 
 func (service *DomitoryService) GetAreaNameAndID() (string, error) {
@@ -108,6 +110,34 @@ func (service *DomitoryService) GetEnergyList(amID, sT, eT string) (string, erro
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
+		return "", err
+	}
+
+	return string(body), nil
+}
+
+func (service *DomitoryService) GetMoney(amID ,sM, eM string) (string, error) {
+	url := fmt.Sprintf("https://jnb.ccnu.edu.cn/icbs/PurchaseWebService.asmx/getMeterMonthValue?AmMeter_ID=" + amID + "&startMonth=" + sM + "&endMonth=" + eM)
+	method := "GET"
+
+	client := &http.Client{}
+	req, err := http.NewRequest(method, url, nil)
+
+	if err != nil {
+		fmt.Println(err)
+		return "", err
+	}
+
+	res, err := client.Do(req)
+	if err != nil {
+		fmt.Println(err)
+		return "", err
+	}
+	defer res.Body.Close()
+
+	body, err := io.ReadAll(res.Body)
+	if err != nil {
+		fmt.Println(err)
 		return "", err
 	}
 
