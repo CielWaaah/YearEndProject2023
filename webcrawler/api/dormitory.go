@@ -15,13 +15,13 @@ func GetDormInfo(c *gin.Context) {
 	}
 }
 
-func Money(c *gin.Context) {
-	var dorm service.DomitoryService
-	var user service.UserService
-
-	err := c.ShouldBind(&user)
-
-	if err == nil {
-		//dorm.GetMoney()
-	}
-}
+//func Money(c *gin.Context) {
+//	var dorm service.DomitoryService
+//	var user service.UserService
+//
+//	err := c.ShouldBind(&user)
+//
+//	if err == nil {
+//		//dorm.GetMoney()
+//	}
+//}
