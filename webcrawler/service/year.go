@@ -10,7 +10,7 @@ type YearService struct {
 }
 
 // 年级
-func (service *YearService) GetGrade(number int) string {
+func (service *YearService) GetGrade(number string) string {
 	var user model.User
 	var a string
 
@@ -39,7 +39,7 @@ func (service *YearService) GetGrade(number int) string {
 }
 
 // 天数
-func (service *YearService) GetDays(number int) int {
+func (service *YearService) GetDays(number string) int {
 	var user model.User
 	//通过学号找到用户
 	user.GetUserByNumber(model.DB, number)
@@ -56,7 +56,7 @@ func (service *YearService) GetDays(number int) int {
 }
 
 // 冬天
-func (service *YearService) GetWinters(number int) int {
+func (service *YearService) GetWinters(number string) int {
 	var user model.User
 	var d int
 

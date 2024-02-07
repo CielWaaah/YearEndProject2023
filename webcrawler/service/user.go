@@ -12,7 +12,7 @@ import (
 )
 
 type UserService struct {
-	Number   int    `json:"number" form:"number" binding:"required"`
+	Number   string `json:"number" form:"number" binding:"required"`
 	Password string `json:"password" form:"password" binding:"required"`
 }
 
